@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Tinitiny</title>
+  <style>
+    /* Reset and basic styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f5f7fa, #feeef8);
+      padding: 20px;
+    }
+
+    .frame {
+      background-color: #f7d7ed;
+      border: 4px solid #000000;
+      border-radius: 12px;
+      padding: 15px;
+      max-width: 100%;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .frame:hover {
+      transform: scale(1.03);
+    }
+
+    .frame img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .button {
+      margin-top: 20px;
+    }
+
+    .button button {
+      padding: 12px 25px;
+      font-size: 1rem;
+      background: linear-gradient(to right, #d09cc5, #df9bcb);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .button button:hover {
+      background: pink;
+      transform: scale(1.05);
+    }
+
+    /* Responsive text */
+    @media (max-width: 400px) {
+      .frame {
+        width: 90%;
+        padding: 10px;
+      }
+      .message {
+        font-size: 0.9rem;
+      }
+      .button button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <img src="pictin.jpg">
+    <div class="message">Hello pretty pretty Christine. Open me!</div>
+    <div class="button">
+      <button onclick="location.href='2.html'">Click Me</button>
+    </div>
+  </div>
+</body>
+</html>

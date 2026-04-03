@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Tinitiny</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa, #feeef8);
+    margin: 0;
+  }
+
+  .frame {
+    position: relative;
+    width: 500px;
+    max-width: 100%;
+    height: 400px;
+    background-color: #f7d7ed;
+    border: 4px solid #000;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    text-align: center;
+  }
+
+  h3 {
+    margin-bottom: 10px;
+    color: #800040;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+
+  .heart {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: url('hurt.webp') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    opacity: 0.5; /* fixed 50% opacity */
+    transform: translateY(0) rotate(0deg);
+  }
+</style>
+</head>
+<body>
+
+<div class="frame">
+  <h3>To my Dearest, Christine,</h3>
+  <p>I hope this letter finds you well. I want you to know that you are worth it— of love, of friendship, of a peaceful life— of everything.</p>
+  <p>You are one of the kindest souls I have ever met. There is something about you that feels almost unreal, like a quiet blessing sent from somewhere above. I often find myself wondering what I ever did to deserve a friendship like yours</p>
+</div>
+
+<script>
+const frame = document.querySelector('.frame');
+
+function createHeart() {
+  const heartsCount = 3; // number of hearts per interval
+  for(let i=0; i<heartsCount; i++){
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    const size = 15 + Math.random() * 25; // 15-40px
+    heart.style.width = size + 'px';
+    heart.style.height = size + 'px';
+    heart.style.left = Math.random() * (frame.clientWidth - size) + 'px';
+    heart.style.top = '-30px';
+
+    frame.appendChild(heart);
+
+    const speed = 0.5 + Math.random() * 1; // slow fall
+    const swayAmplitude = Math.random() * 30 + 10;
+    const swayFrequency = Math.random() * 0.05 + 0.02;
+    const rotateSpeed = (Math.random() - 0.5) * 5;
+
+    let top = -30;
+    const startLeft = parseFloat(heart.style.left);
+    let rotation = 0;
+
+    function animate() {
+      top += speed;
+      rotation += rotateSpeed;
+      const left = startLeft + Math.sin(top * swayFrequency) * swayAmplitude;
+      heart.style.top = top + 'px';
+      heart.style.left = left + 'px';
+      heart.style.transform = `rotate(${rotation}deg)`;
+
+      if(top < frame.clientHeight + 50){
+        requestAnimationFrame(animate);
+      } else {
+        heart.remove();
+      }
+    }
+
+    animate();
+  }
+}
+
+// spawn hearts continuously
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
